@@ -1,8 +1,14 @@
 * {
+    /* --main_color-foreground: #1D64F2;
+    --main_color-background: #010326;
+    --main_color-progress: #F079F2;
+    --main_color-inactive: slategray; */
+    
     --main_color-foreground: #05F2DB;
     --main_color-background: black;
     --main_color-progress: #F2059F;
     --main_color-inactive: slategray;
+    --main_color-whitesmoke: whitesmoke;
 
     /* --main_color-foreground: lime;
     --main_color-background: black;
@@ -15,201 +21,169 @@
     --main_color-inactive: slategray; */
 
     font-family: inherit;
-
+    color: inherit;
+    
     padding: 0;
     margin: 0;
+
+    background: transparent;
+    border-radius: 0;
+    border: none;
 }
 
-body {
-    background: var(--main_color-background);
+html {
     font-family: Courier;
-
-    min-height: 100vh;
-    /* width: 100vw; */
-    /* padding: 2rem; */
-
-    display: flex;
-    flex-direction: column;
+    color: var(--main_color-whitesmoke);
+    background: var(--main_color-background);
 }
-
-.screen {
-    --color-main: rgb(46, 156, 156);
-    --line-height: 5px;
-
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        0deg, 
-        var(--color-main) 1px,
-        transparent       1px,
-        transparent       var(--line-height)   
-        );  
-    background-size: 100% var(--line-height);
-    animation: analog-lines 2s linear infinite;
-
-    z-index: 9999;
-    opacity: 0.2;
-
-    pointer-events: none;
-}
-
-    @keyframes analog-lines {
-        from { background-position: 0 0px; }
-        to   { background-position: 0 var(--line-height); }
-    }
 
 #navigation {
-    position: sticky;
-    top: 0;
-    height: 5rem;
-    width: 100vw;
-
-    background: var(--main_color-background);
-    border-bottom: 1px solid var(--main_color-foreground);
+    display: flex;
+    justify-content: space-between;
+    height: 2.5rem;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--main_color-whitesmoke);
 
     .logo {
         display: flex;
         align-items: center;
-        justify-content: center;
-        position: relative;
-        height: 7rem;
-        aspect-ratio: 2;
-
-        overflow: hidden;
-        background: #F2059F;
-
-        & h1 {
-            z-index: 1;
-            font-family: Garamond;
-            color: white;
-            font-size: 36pt;
-        }
-    }
-}
-
-.progress-roadmap {
-    --color-main: var(--main_color-inactive);
-
-    display: flex;
-    justify-content: center;
-    gap: 2ch;
-    padding: 1rem 2rem;
-
-    height: 300px;
-
-    & div > div {
-        opacity: 0.5;
-    }
-
-    .stop {
-        color: var(--color-main);
-    }
-
-    .complete {
-        --color-main: var(--main_color-foreground);
-    }
-    
-    .in-progress {
-        --color-main: var(--main_color-progress);
-    }
-    
-    .current {
-        opacity: 1;
-    }
-
-    .visual {
         height: 100%;
-        aspect-ratio: 1;
-        outline: 1px solid white;
-
-        & svg {
-            width: 100%;
-            height: 100%;
-
-            & rect {
-                fill: transparent;
-                
-                &.active {
-                    fill: var(--main_color-foreground);
-                }
-
-                &:hover {
-                    fill: white;
-                }
-            }
-        }
     }
 
-    .journey {
-        position: relative;
+    & nav {
+        --color: var(--main_color-whitesmoke);
+
+        position: sticky;
+        top: 0;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
+        height: 100%;
 
-        .road {
-            min-height: 8px;
-            min-width: 8px;
-            flex: 1;
-
-            background: linear-gradient(
-                135deg, 
-                var(--color-main) 25%,
-                transparent       25%,
-                transparent       50%,
-                var(--color-main) 50%,
-                var(--color-main) 75%,
-                transparent       75%,
-                transparent
-            );  
-            background-size: 20px 20px;
-            z-index: 0;
-
-            &.in-progress {
-                --color-main: var(--main_color-progress);
-                background-size: 20px 20px;
-                animation: progression 0.75s linear infinite;
-            }
-
-            &.complete {
-                background: var(--color-main);
-            }
-        }
-
-        .stop {
-            height: 16px;
-            aspect-ratio: 1;
-
-            background: var(--color-main);
-            z-index: 1;
-
-            &.current {
-                height: 20px;
-            }
-
-            &:hover {
-                scale: 1.1;
-                opacity: 1;
-            }
-        }
-    }
-
-    .descriptions {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        & p {
-            height: 16px;
+        & > ul {
+            list-style: none;
             display: flex;
             align-items: center;
 
-            color: var(--color-main);
+            &:hover:has(li > a:hover) {
+                & > li > a {
+                    opacity: 0.5;
+
+                    &:hover {
+                        opacity: 1;
+                        /* --color: var(--main_color-foreground); */
+                        font-weight: bold;
+                        text-shadow:
+                            -3px -1px 2px var(--main_color-foreground),
+                            3px 1px 2px var(--main_color-progress);
+                    }
+                }
+            }
+
+            & > li {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: flex-start;
+                padding: 0 1rem;
+                cursor: pointer;
+
+                & > a {
+                    text-decoration: none;
+                    color: var(--color);
+                    transition: all 200ms ease;
+                }
+            }
+
+            .accordion {
+                position: absolute;
+                top: calc(100% + 1.5rem);
+                outline: 1px solid var(--main_color-whitesmoke);
+
+                width: max-content;
+                height: max-content;
+                display: grid;
+                grid-template-rows: 0fr;
+                grid-template-columns: 0fr;
+                opacity: 0;
+
+                transition:
+                    opacity 500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+                    grid-template-columns 500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+                    grid-template-rows 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
+
+                &:not(.active) {
+                    transition:
+                        opacity 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 350ms,
+                        grid-template-columns 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 350ms,
+                        grid-template-rows 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+                }
+
+                &.active {
+                    grid-template-rows: 1fr;
+                    grid-template-columns: 1fr;
+                    opacity: 1;
+                }
+
+                & > div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    overflow: hidden;
+                    padding: 0 1rem;
+
+                    & > * {
+                        margin: 0.25rem 0;
+                    }
+                }
+
+                & ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    overflow: hidden;
+                    padding: 0 1rem;
+                }
+            }
         }
     }
 }
 
-@keyframes progression {
-    from { background-position: 0 0; }
-    to   { background-position: 20px 0; }
+*:focus:not(a) {
+    /* outline: 2px solid var(--main_color-foreground); */
+    outline: none;
+    box-shadow:
+        -1px -1px 1px 1px var(--main_color-foreground),
+        1px 1px 1px 1px var(--main_color-progress);
+}
+
+input {
+    background: var(--main_color-whitesmoke);
+    color: black;
+    padding: 0.1ch 0.5ch;
+
+    transition: all 200ms ease;
+}
+
+button {
+    background: var(--main_color-whitesmoke);
+    color: black;
+    padding: 0.25ch 1ch;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: underline;
+
+    &:focus {
+        outline: none;
+        font-weight: bold;
+        text-shadow:
+            -3px -1px 2px var(--main_color-foreground),
+            3px 1px 2px var(--main_color-progress);
+    }
+}
+
+.note {
+    font-size: 8pt;
 }

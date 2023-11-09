@@ -1,0 +1,223 @@
+* {
+    --main_color-foreground: #05F2DB;
+    --main_color-background: black;
+    --main_color-progress: #F2059F;
+    --main_color-inactive: slategray;
+
+    /* --main_color-foreground: lime;
+    --main_color-background: black;
+    --main_color-progress: lime;
+    --main_color-inactive: slategray; */
+
+    /* --main_color-foreground: #673AB7;
+    --main_color-background: white;
+    --main_color-progress: #673AB7;
+    --main_color-inactive: slategray; */
+
+    font-family: inherit;
+
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: var(--main_color-background);
+    font-family: Courier;
+
+    min-height: 100vh;
+    /* width: 100vw; */
+    /* padding: 2rem; */
+
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    --color-main: rgb(46, 156, 156);
+    --line-height: 5px;
+
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        0deg, 
+        var(--color-main) 1px,
+        transparent       1px,
+        transparent       var(--line-height)   
+        );  
+    background-size: 100% var(--line-height);
+    animation: analog-lines 2s linear infinite;
+
+    z-index: 9999;
+    opacity: 0.2;
+
+    pointer-events: none;
+}
+
+    @keyframes analog-lines {
+        from { background-position: 0 0px; }
+        to   { background-position: 0 var(--line-height); }
+    }
+
+#navigation {
+    position: sticky;
+    top: 0;
+    height: 5rem;
+    width: 100vw;
+
+    background: var(--main_color-background);
+    border-bottom: 1px solid var(--main_color-foreground);
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 7rem;
+        aspect-ratio: 2;
+
+        overflow: hidden;
+        background: #F2059F;
+
+        & h1 {
+            z-index: 1;
+            font-family: Garamond;
+            color: white;
+            font-size: 36pt;
+        }
+    }
+}
+
+.progress-roadmap {
+    --color-main: var(--main_color-inactive);
+
+    display: flex;
+    justify-content: center;
+    gap: 2ch;
+    padding: 1rem 2rem;
+
+    height: 300px;
+
+    .visual {
+        height: 100%;
+        aspect-ratio: 1;
+        outline: 1px solid white;
+
+        & svg {
+            width: 100%;
+            height: 100%;
+
+            & rect {
+                fill: transparent;
+                
+                &.active {
+                    fill: var(--main_color-foreground);
+                }
+
+                &:hover {
+                    fill: white;
+                }
+            }
+        }
+    }
+
+    .journey, .descriptions {
+        display: flex;
+        flex-direction: column-reverse;
+
+        & > * {
+            opacity: 0.5;
+        }
+    }
+
+    .stop {
+        color: var(--color-main);
+    }
+
+    .complete {
+        --color-main: var(--main_color-foreground);
+    }
+    
+    .in-progress {
+        --color-main: var(--main_color-progress);
+    }
+    
+    .current {
+        opacity: 1;
+    }
+
+    .journey {
+        position: relative;
+        align-items: center;
+        gap: 5px;
+
+        .road {
+            min-height: 8px;
+            min-width: 8px;
+            flex: 1;
+
+            background: linear-gradient(
+                135deg, 
+                var(--color-main) 25%,
+                transparent       25%,
+                transparent       50%,
+                var(--color-main) 50%,
+                var(--color-main) 75%,
+                transparent       75%,
+                transparent
+            );  
+            background-size: 20px 20px;
+            z-index: 0;
+
+            &.in-progress {
+                --color-main: var(--main_color-progress);
+                background-size: 20px 20px;
+                animation: progression 0.75s linear infinite;
+            }
+
+            &.complete {
+                background: var(--color-main);
+            }
+        }
+
+        .stop {
+            height: 16px;
+            aspect-ratio: 1;
+
+            background: var(--color-main);
+            z-index: 1;
+
+            &.current {
+                height: 20px;
+            }
+
+            &:hover {
+                scale: 1.1;
+                opacity: 1;
+            }
+        }
+    }
+
+    .descriptions {
+        justify-content: space-between;
+
+        & p {
+            height: 16px;
+            display: flex;
+            align-items: center;
+            width: 50ch;
+
+            color: var(--color-main);
+
+            &.in-progress {
+                &:before {
+                    content: 'Loading:\00a0';
+                }
+            }
+        }
+    }
+}
+
+@keyframes progression {
+    from { background-position: 0 0; }
+    to   { background-position: -20px 0; }
+}

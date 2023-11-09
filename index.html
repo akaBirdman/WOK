@@ -1,45 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
-	<title>Document</title>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css">
+		<script src="https://kit.fontawesome.com/cb8625b2b2.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+		<title>Document</title>
+	</head>
 
-<body>
-	<div id="navigation">
-		<div class="logo">
-			<h1>WOK</h1>
+	<body>
+		<div id="navigation">
+			<div class="logo">
+				<h1>WOK</h1>
+			</div>
+			<nav>
+				<ul class="stir">
+					<li class="fry">
+						<a href="">Link</a>
+					</li>
+					<li class="fry">
+						<a href="">Who We Are</a>
+					</li>
+					<li class="fry">
+						<a href="">Services</a>
+						<div class="accordion">
+							<ul>
+								<li>Service</li>
+								<li>Service</li>
+								<li>Service</li>
+								<li>Service</li>
+								<li>Service</li>
+							</ul>
+						</div>
+					</li>
+					<li class="fry">
+						<a href="">Request a Quote</a>
+					</li>
+					<li class="fry">
+						<a href="#" onclick="toggle_active(this)">
+							<i class="fa-solid fa-user"></i>
+						</a>
+						<div class="accordion">
+							<div>
+								<input type="email" placeholder="email">
+								<input type="password" placeholder="password">
+								<button>LOGIN</button>
+								<div>
+									<a class="note">Forgot Password</a>
+									<a class="note">Register</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</nav>
 		</div>
-		<nav class="stir"></nav>
-	</div>
 
-	<!-- <div class="screen"></div> -->
-
-	<section class="progress-roadmap">
-		<div class="visual">
-			<svg viewbox="0 0 40 40"></svg>
-		</div>
-		<div class="journey">
-			<div class="stop"></div>
-			<div class="road"></div>
-			<div class="stop"></div>
-			<div class="road"></div>
-			<div class="stop"></div>
-			<div class="road"></div>
-			<div class="stop"></div>
-		</div>
-		<div class="descriptions">
-			<p>Your car is parked and waiting!</p>
-			<p>Your car is next up!</p>
-			<p>Your car is being worked on!</p>
-			<p>Your car is done and ready for pickup!</p>
-		</div>
-	</section>
-
-	<script src="main.js"></script>
-</body>
-
+		<script src="main.js"></script>
+	</body>
 </html>
