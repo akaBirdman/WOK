@@ -52,6 +52,7 @@ body {
     padding: 0 2rem;
     border-bottom: 1px solid var(--main_color-whitesmoke);
     background: var(--main_color-background);
+    box-shadow: 0px -10px 20px 20px rgba(0, 0, 0, 0.5);
 
     .logo {
         display: flex;
@@ -249,25 +250,32 @@ a {
 
         .carousel-navigation {
             position: absolute;
-            left: 0;
-            right: 0;
+            left: 1rem;
+            width: 25rem;
             bottom: 1rem;
 
             display: flex;
-            justify-content: center;
+            /* justify-content: center; */
             gap: 1rem;
 
             & a {
-                width: 2ch;
-                aspect-ratio: 1;
-                border-radius: 50%;
-                background: var(--main_color-whitesmoke);
+                /* width: 2ch; */
+                height: 1ch;
+                flex: 1;
+                /* aspect-ratio: 5; */
+                background: black;
 
                 opacity: 0.5;
-                transition: opacity 200ms ease;
+                transition: all 400ms ease;
 
-                &:hover {
+                transform: skew(-20deg);
+
+                &.active {
                     opacity: 1;
+                    background: var(--main_color-whitesmoke);
+                    box-shadow:
+                        -1px -1px 1px 1px var(--main_color-foreground),
+                        1px 1px 1px 1px var(--main_color-progress);
                 }
             }
         }

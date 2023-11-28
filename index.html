@@ -60,21 +60,21 @@
 		<section id="welcome">
 			<div class="carousel">
 				<div class="slideshow" slideIndex="0">
-					<img id="slide-1" src="images_jdm/240-yellow.jpg" alt="">
-					<img id="slide-2" src="images_jdm/86-white.jpg" alt="">
-					<img id="slide-3" src="images_jdm/s2000-black.jpg" alt="">
-					<img id="slide-4" src="images_jdm/supra-red.jpg" alt="">
+					<img id="slide-1" class="slide" src="images_jdm/240-yellow.jpg" alt="">
+					<img id="slide-2" class="slide" src="images_jdm/86-white.jpg" alt="">
+					<img id="slide-3" class="slide" src="images_jdm/s2000-black.jpg" alt="">
+					<img id="slide-4" class="slide" src="images_jdm/supra-red.jpg" alt="">
 				</div>
 				<div class="carousel-navigation">
-					<a href="#slide-1"></a>
-					<a href="#slide-2"></a>
-					<a href="#slide-3"></a>
-					<a href="#slide-4"></a>
+					<a class="nav-link active" href="#slide-1"></a>
+					<a class="nav-link" href="#slide-2"></a>
+					<a class="nav-link" href="#slide-3"></a>
+					<a class="nav-link" href="#slide-4"></a>
 				</div>
 			</div>
 		</section>
 
-		<button onclick="do_scroll()">SCROLL</button>
+		<button onclick="slideshow_scroll(document.querySelector('#welcome > .carousel > .slideshow'))">SCROLL</button>
 
 		<script src="main.js"></script>
 	</body>
