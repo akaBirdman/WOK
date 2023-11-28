@@ -6,8 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style.css">
 		<script src="https://kit.fontawesome.com/cb8625b2b2.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-		<title>Document</title>
+		<title>WOK Automotive Industries</title>
 	</head>
 
 	<body>
@@ -24,14 +23,14 @@
 						<a href="">Who We Are</a>
 					</li>
 					<li class="fry">
-						<a href="">Services</a>
+						<a class="ingredients">Services</a>
 						<div class="accordion">
 							<ul>
-								<li>Service</li>
-								<li>Service</li>
-								<li>Service</li>
-								<li>Service</li>
-								<li>Service</li>
+								<li><a href="">Service #</a></li>
+								<li><a href="">Service #</a></li>
+								<li><a href="">Service #</a></li>
+								<li><a href="">Service #</a></li>
+								<li><a href="">Service #</a></li>
 							</ul>
 						</div>
 					</li>
@@ -39,13 +38,13 @@
 						<a href="">Request a Quote</a>
 					</li>
 					<li class="fry">
-						<a href="#" onclick="toggle_active(this)">
+						<a href="Account" class="ingredients">
 							<i class="fa-solid fa-user"></i>
 						</a>
 						<div class="accordion">
 							<div>
-								<input type="email" placeholder="email">
-								<input type="password" placeholder="password">
+								<input type="email" name="email" placeholder="email" autocomplete="email">
+								<input type="password" name="password" placeholder="password" autocomplete="current-password">
 								<button>LOGIN</button>
 								<div>
 									<a class="note">Forgot Password</a>
@@ -57,6 +56,25 @@
 				</ul>
 			</nav>
 		</div>
+
+		<section id="welcome">
+			<div class="carousel">
+				<div class="slideshow" slideIndex="0">
+					<img id="slide-1" src="images_jdm/240-yellow.jpg" alt="">
+					<img id="slide-2" src="images_jdm/86-white.jpg" alt="">
+					<img id="slide-3" src="images_jdm/s2000-black.jpg" alt="">
+					<img id="slide-4" src="images_jdm/supra-red.jpg" alt="">
+				</div>
+				<div class="carousel-navigation">
+					<a href="#slide-1"></a>
+					<a href="#slide-2"></a>
+					<a href="#slide-3"></a>
+					<a href="#slide-4"></a>
+				</div>
+			</div>
+		</section>
+
+		<button onclick="do_scroll()">SCROLL</button>
 
 		<script src="main.js"></script>
 	</body>

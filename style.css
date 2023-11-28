@@ -37,12 +37,21 @@ html {
     background: var(--main_color-background);
 }
 
+body {
+    height: 200vh;
+}
+
 #navigation {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
     display: flex;
     justify-content: space-between;
     height: 2.5rem;
     padding: 0 2rem;
     border-bottom: 1px solid var(--main_color-whitesmoke);
+    background: var(--main_color-background);
 
     .logo {
         display: flex;
@@ -53,12 +62,10 @@ html {
     & nav {
         --color: var(--main_color-whitesmoke);
 
-        position: sticky;
-        top: 0;
         display: flex;
         height: 100%;
 
-        & > ul {
+        & ul {
             list-style: none;
             display: flex;
             align-items: center;
@@ -76,6 +83,17 @@ html {
                             3px 1px 2px var(--main_color-progress);
                     }
                 }
+
+                & > li:has(ul a:hover) {
+                    & > a {
+                        opacity: 1;
+                        /* --color: var(--main_color-foreground); */
+                        font-weight: bold;
+                        text-shadow:
+                            -3px -1px 2px var(--main_color-foreground),
+                            3px 1px 2px var(--main_color-progress);
+                    }
+                }
             }
 
             & > li {
@@ -85,7 +103,7 @@ html {
                 align-items: flex-end;
                 justify-content: flex-start;
                 padding: 0 1rem;
-                cursor: pointer;
+                /* cursor: pointer; */
 
                 & > a {
                     text-decoration: none;
@@ -97,6 +115,7 @@ html {
             .accordion {
                 position: absolute;
                 top: calc(100% + 1.5rem);
+                background: var(--main_color-background);
                 outline: 1px solid var(--main_color-whitesmoke);
 
                 width: max-content;
@@ -174,6 +193,8 @@ button {
 
 a {
     text-decoration: underline;
+    white-space: nowrap;
+    cursor: pointer;
 
     &:focus {
         outline: none;
@@ -182,8 +203,73 @@ a {
             -3px -1px 2px var(--main_color-foreground),
             3px 1px 2px var(--main_color-progress);
     }
+
+    & * {
+        pointer-events: none;
+    }
 }
 
 .note {
     font-size: 8pt;
+}
+
+#welcome {
+    height: 700px;
+    background: red;
+    position: relative;
+    display: flex;
+    z-index: 0;
+
+    .carousel {
+        position: relative;
+        flex: 1 0 100%;
+
+        .slideshow {
+            position: absolute;
+            inset: 0;
+            background: orange;
+
+            display: flex;
+            overflow-y: hidden;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            & img {
+                flex: 1 0 100%;
+                scroll-snap-align: start;
+
+                object-fit: cover;
+            }
+        }
+
+        .carousel-navigation {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 1rem;
+
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            & a {
+                width: 2ch;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background: var(--main_color-whitesmoke);
+
+                opacity: 0.5;
+                transition: opacity 200ms ease;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }
