@@ -1,0 +1,123 @@
+#navigation {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: space-between;
+    height: 2.5rem;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--main_color-whitesmoke);
+    background: var(--main_color-background);
+    box-shadow: 0px -10px 20px 20px rgba(0, 0, 0, 0.5);
+}
+
+#navigation .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#navigation nav {
+    --color: var(--main_color-whitesmoke);
+
+    display: flex;
+    height: 100%;
+}
+
+#navigation nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+#navigation nav ul > li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    /* cursor: pointer; */
+}
+
+#navigation nav > ul > li > a {
+    text-decoration: none;
+    color: var(--color);
+    transition: all 200ms ease;
+}
+
+#navigation nav ul:hover:has(li > a:hover) > li > a {
+    opacity: 0.5;
+}
+
+#navigation nav ul:hover:has(li > a:hover) > li > a:hover {
+    opacity: 1;
+    /* --color: var(--main_color-foreground); */
+    font-weight: bold;
+    text-shadow:
+        -3px -1px 2px var(--main_color-foreground),
+        3px 1px 2px var(--main_color-progress);
+}
+
+#navigation nav ul:hover:has(li > a:hover) > li:has(ul a:hover) > a {
+    opacity: 1;
+    /* --color: var(--main_color-foreground); */
+    font-weight: bold;
+    text-shadow:
+        -3px -1px 2px var(--main_color-foreground),
+        3px 1px 2px var(--main_color-progress);
+}
+
+#navigation .accordion {
+    position: absolute;
+    top: calc(100% + 1.5rem);
+    background: var(--main_color-background);
+    outline: 1px solid var(--main_color-whitesmoke);
+
+    width: max-content;
+    height: max-content;
+    display: grid;
+    grid-template-rows: 0fr;
+    grid-template-columns: 0fr;
+    opacity: 0;
+
+    transition:
+        opacity 500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+        grid-template-columns 500ms cubic-bezier(0.075, 0.82, 0.165, 1),
+        grid-template-rows 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 200ms;
+}
+
+#navigation .accordion:not(.active) {
+    transition:
+        opacity 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 350ms,
+        grid-template-columns 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 350ms,
+        grid-template-rows 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#navigation .accordion.active {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    opacity: 1;
+}
+
+#navigation .accordion > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+
+#navigation .accordion > div > * {
+    margin: 0.25rem 0;
+}
+
+#navigation .accordion ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 1rem;
+}

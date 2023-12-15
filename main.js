@@ -52,7 +52,7 @@ function slideshow_navigateSlide(element) {
     slideshow_scroll(slideShow, options);
 
     $Timer_autoScroll = setInterval( function() {
-        slideshow_scroll(document.querySelector('#welcome > .carousel > .slideshow'));
+        slideshow_scroll(document.querySelector('#hero > .carousel > .slideshow'));
     }, 5000);
 }
 
@@ -91,5 +91,6 @@ document.querySelectorAll('.carousel > .slideshow').forEach(element => {
 });
 
 var $Timer_autoScroll = setInterval( function() {
-    slideshow_scroll(document.querySelector('#welcome > .carousel > .slideshow'));
+    if (document.visibilityState == 'hidden') return;
+    slideshow_scroll(document.querySelector('#hero > .carousel > .slideshow'));
 }, 5000);

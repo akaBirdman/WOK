@@ -9,8 +9,8 @@
 		<title>WOK Automotive Industries</title>
 	</head>
 
-	<body>
-		<div id="navigation">
+	<body class="dark-mode">
+		<!-- <div id="navigation">
 			<div class="logo">
 				<h1>WOK</h1>
 			</div>
@@ -55,9 +55,44 @@
 					</li>
 				</ul>
 			</nav>
-		</div>
+		</div> -->
 
-		<section id="welcome">
+		<header class="navigation">
+			<div class="logo">LOGO</div>
+			<nav id="nav-main">
+				<div id="mobile-navigation" class="mobile tablet">
+					<input type="checkbox" id="nav-checkbox">
+					<label for="nav-checkbox">
+						<i id="nav-close" class="fa-solid fa-xmark"></i>
+						<i id="nav-open" class="fa-solid fa-bars"></i>
+						<!-- <svg id="nav-open" xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+							<path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+						</svg>
+						<svg id="nav-close" xmlns="http://www.w3.org/2000/svg" height="16" width="12" viewBox="0 0 384 512">
+							<path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+						</svg> -->
+					</label>
+				</div>
+				<ul>
+					<li>
+						<a href="">Services</a>
+					</li>
+					<li>
+						<a href="">Who We Are</a>
+					</li>
+					<li>
+						<a href="">Request A Quote</a>
+					</li>
+					<li>
+						<a href="">
+							<i class="fa-solid fa-user"></i>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+
+		<section id="hero">
 			<div class="carousel">
 				<div class="slideshow" slideIndex="0">
 					<img id="slide-1" class="slide" src="images_jdm/240-yellow.jpg" alt="">
@@ -74,7 +109,7 @@
 			</div>
 		</section>
 
-		<button onclick="slideshow_scroll(document.querySelector('#welcome > .carousel > .slideshow'))">SCROLL</button>
+		<!-- <button onclick="slideshow_scroll(document.querySelector('#hero > .carousel > .slideshow'))">SCROLL</button> -->
 
 		<script src="main.js"></script>
 	</body>
